@@ -9,10 +9,10 @@ const Footer = () => {
           <Col xs={{ size: 4, offset: 1 }} sm='2'><h5>Links</h5></Col>
 
           <ul className='list-unstyled'>
-            <li Link to='/'>Home</li>
-            <li Link to='/directory'>Directory</li>
-            <li Link to='/about'>About</li>
-            <li Link to='/contact'>Contact</li>
+            <li> <Link to='/'>Home</Link> </li>
+            <li> <Link to='/directory'>Directory</Link> </li>
+            <li> <Link to='/about'>About</Link> </li>
+            <li> <Link to='/contact'>Contact</Link> </li>
           </ul>
           
           <Col xs='6' sm='3' className='text-center'>
