@@ -1,6 +1,5 @@
 import { Container } from 'reactstrap';
 import DisplayList from '../features/display/DisplayList';
-import { Link } from 'react-router-dom' ///what the fuck even is this? 
 import SubHeader from '../components/SubHeader';
 const HomePage = () => {
   return (
