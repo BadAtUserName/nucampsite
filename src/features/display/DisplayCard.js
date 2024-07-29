@@ -1,5 +1,6 @@
 import {Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 
+
 const DisplayCard = ({item}) => {
   const {image, name, description} = item; //desctructer from the item object
   return (
