@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import { selectCampsiteById } from '../features/campsites/campsitesSlice';
@@ -7,7 +8,8 @@ import SubHeader from '../components/SubHeader';
 
 const CampsiteDetailPage = () => {
   const { campsiteId } = useParams(); //destruct var campsiteID from useParams function the url parameter will be aval as 1st property
-  const campsite = selectCampsiteById(campsiteId);
+  const campsite = useSelector(selectCampsiteById(campsiteId));
+  console.log('campsite:', campsite);
   return (
     <Container>
       <SubHeader current={campsite.name} detail={true} />
