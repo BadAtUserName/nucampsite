@@ -1,8 +1,21 @@
 import { CAMPSITES } from "../../app/shared/CAMPSITES";
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+  campsitesArray: CAMPSITES
+}
+
+const campsitesSlice = createSlice({
+  name: 'campsites', 
+  initialState
+});
+
+export const campsitesReducer = campsitesSlice;
 
 export const selectAllCampsites = () => {
   return CAMPSITES;
 }
+
 
 //below in the function in the return, returns the campsite with the same id as the id that was passed into the function
 export const selectCampsiteById = (id) => {
