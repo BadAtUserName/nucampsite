@@ -10,10 +10,11 @@ import AnimatedDisplayCard from './AnimatedDisplayCard';//this might need anothe
 
 const DisplayList = () => {
   const items = useSelector((state) => [
-    selectFeaturedCampsite(state), 
-    selectFeaturedPromotion(state), 
+    selectFeaturedCampsite(state),
+    //selectFeaturedPromotion(state), 
     selectFeaturedPartner(state)
   ]); //display 2 items from each array by returning the value from the functions in the array
+  console.log('display items:', items);
 
     
   return (

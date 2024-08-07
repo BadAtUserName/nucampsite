@@ -1,13 +1,13 @@
-import { CAMPSITES } from "../../app/shared/CAMPSITES";
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { CAMPSITES } from '../../app/shared/CAMPSITES';
 
 const initialState = {
-  campsitesArray: CAMPSITES
-}
+    campsitesArray: CAMPSITES
+};
 
 const campsitesSlice = createSlice({
-  name: 'campsites', 
-  initialState
+    name: 'campsites',
+    initialState
 });
 
 export const campsitesReducer = campsitesSlice.reducer;
@@ -15,7 +15,6 @@ export const campsitesReducer = campsitesSlice.reducer;
 export const selectAllCampsites = (state) => {
   return state.campsites.campsitesArray;
 };
-
 
 //below in the function in the return, returns the campsite with the same id as the id that was passed into the function
 export const selectCampsiteById = (id) => (state) => {
@@ -25,8 +24,9 @@ export const selectCampsiteById = (id) => (state) => {
 };
 
 export const selectFeaturedCampsite = (state) => {
-  return state.campsites.campsitesArray.find((campsite) => campsite.featured)
-}
+  return state.campsites.campsitesArray.find((campsite) => campsite.featured);
+};
+
 
 
 //export const selectRandomCampsite = () => {

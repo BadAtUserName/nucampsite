@@ -3,15 +3,17 @@ import { campsitesReducer } from '../features/campsites/campsitesSlice';
 import { commentsReducer } from '../features/comments/commentsSlice';
 import { partnersReducer } from '../features/partners/partnersSlice';
 import { promotionsReducer } from '../features/promotions/promotionsSlice';
+import { logger } from 'redux-logger'
+
 
 export const store = configureStore({
   reducer: {
-    //add to store by passing it into config store func as an object
-    campsites:campsitesReducer, 
-    comments: commentsReducer,
-    partners: partnersReducer,
-    promotions: promotionsReducer
+      campsites: campsitesReducer,
+      comments: commentsReducer,
+      partners: partnersReducer,
+      promotions: promotionsReducer
   },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat([logger])
 });
 
 console.log(store.getState())
