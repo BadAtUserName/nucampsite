@@ -6,6 +6,7 @@ import AboutPage from './pages/AboutPage';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPartners } from './features/partners/partnersSlice';
+import { fetchPromotions } from './features/promotions/promotionsSlice';
 import './App.css';
 
 
@@ -18,12 +19,15 @@ import { fetchCampsites } from './features/campsites/campsitesSlice';
 
 
 
+
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Fetching data...");
     dispatch(fetchCampsites());
     dispatch(fetchPartners());
+    dispatch(fetchPromotions())
 }, [dispatch]);
 
 
