@@ -18,3 +18,4 @@ const CampsiteDetail = ({ campsite }) => {
 }
 
 export default CampsiteDetail;
+

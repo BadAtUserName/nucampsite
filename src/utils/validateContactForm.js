@@ -22,7 +22,7 @@ export const validateContactForm = (values) => {
     errors.phoneNum = 'The phone number should contain only numbers.'
   }
   if (!values.email.includes('@')) {
-    errors.email = 'Email sould contain a @'
+    errors.email = 'Email should contain a @'
   }
   return errors;
 };

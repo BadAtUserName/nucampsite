@@ -1,13 +1,48 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { CAMPSITES } from '../../app/shared/CAMPSITES';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// import { CAMPSITES } from '../../app/shared/CAMPSITES'
+import { baseUrl } from '../../app/shared/baseUrl';
+import { mapImageURL } from '../../utils/mapImageURL';
+
+export const fetchCampsites = createAsyncThunk(
+  'campsites/fetchCampsites',
+  async () => {
+      const response = await fetch(baseUrl + 'campsites');
+      if (!response.ok) {
+          return Promise.reject('Unable to fetch, status: ' + response.status);
+      }
+      const data = await response.json();
+      return data;
+  }
+);
 
 const initialState = {
-    campsitesArray: CAMPSITES
+  //campsites: [],
+  campsitesArray: [],
+  isLoading: true,
+  errMsg: ''
 };
 
 const campsitesSlice = createSlice({
-    name: 'campsites',
-    initialState
+  name: 'campsites',
+  initialState,
+  reducers: {},
+  extraReducers: {
+      [fetchCampsites.pending]: (state) => {
+          state.isLoading = true;
+          console.log('Fetching campsites...');
+      },
+      [fetchCampsites.fulfilled]: (state, action) => {
+          state.isLoading = false;
+          state.errMsg = '';
+          state.campsitesArray = mapImageURL(action.payload);
+          console.log('Campsites Array:', state.campsitesArray);
+      },
+      [fetchCampsites.rejected]: (state, action) => {
+          state.isLoading = false;
+          state.errMsg = action.error ? action.error.message : 'Fetch failed';
+          console.log('Fetch Error:', state.errMsg);
+      }
+  }
 });
 
 export const campsitesReducer = campsitesSlice.reducer;
@@ -16,7 +51,6 @@ export const selectAllCampsites = (state) => {
   return state.campsites.campsitesArray;
 };
 
-//below in the function in the return, returns the campsite with the same id as the id that was passed into the function
 export const selectCampsiteById = (id) => (state) => {
   return state.campsites.campsitesArray.find(
       (campsite) => campsite.id === parseInt(id)
@@ -28,6 +62,7 @@ export const selectFeaturedCampsite = (state) => {
 };
 
 
+//below in the function in the return, returns the campsite with the same id as the id that was passed into the function
 
 //export const selectRandomCampsite = () => {
   //return CAMPSITES[Math.floor(CAMPSITES.length * Math.random())]; //selects random campsite object from the //CAMPSITES array
